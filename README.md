@@ -5,15 +5,15 @@
   />
   <br/>
   <b>
-    <a href="https://imjeswar.github.io/Inkify/">
-      https://imjeswar.github.io/Inkify/
+    <a href="https://github.com/imjeswar/inkify-text.git">
+      https://imjeswar.github.io/inkify-text/
     </a>
   </b>
   <br/><br/>
 
   <img 
     alt="NPM Version" 
-    src="https://img.shields.io/github/package-json/v/imjeswar/Inkify?style=for-the-badge&labelColor=black&logo=npm&color=darkred" 
+    src="https://img.shields.io/github/package-json/v/imjeswar/inkify-text?style=for-the-badge&labelColor=black&logo=npm&color=darkred" 
   />
 
   <a href="#contributing">
@@ -25,10 +25,10 @@
 
   <br/>
 
-  <a href="https://github.com/imjeswar/Inkify/blob/main/LICENSE">
+  <a href="https://github.com/imjeswar/inkify-text/blob/main/LICENSE">
     <img 
       alt="GitHub License MIT" 
-      src="https://img.shields.io/github/license/imjeswar/Inkify?style=for-the-badge&labelColor=black&logo=github" 
+      src="https://img.shields.io/github/license/imjeswar/inkify-text?style=for-the-badge&labelColor=black&logo=github" 
     >
   </a>
 
