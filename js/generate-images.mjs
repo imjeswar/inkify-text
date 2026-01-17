@@ -23,12 +23,41 @@ async function convertDIVToImage() {
   /** Function html2canvas comes from a library html2canvas which is included in the index.html */
   const canvas = await html2canvas(pageEl, options);
 
+  // Apply Margin Logic (Canvas Draw)
+  const ctx = canvas.getContext('2d');
+  const sideMargin = document.querySelector('#side-margin').value;
+  const topMargin = document.querySelector('#top-margin').value;
+  const resolution = document.querySelector('#resolution').value;
+
+  // Scale margin positions by resolution
+  const sideX = 54 * resolution; // Approx 54px due to padding logic
+  const topY = 54 * resolution;  // Approx 54px due to padding logic
+
+  ctx.lineWidth = 1 * resolution;
+
+  // SIDE MARGIN DRAWING
+  if (sideMargin === 'black' || sideMargin === 'red') {
+    ctx.strokeStyle = sideMargin === 'red' ? '#d32f2f' : '#222';
+    ctx.beginPath();
+    ctx.moveTo(sideX, 0);
+    ctx.lineTo(sideX, canvas.height);
+    ctx.stroke();
+  }
+
+  // TOP MARGIN DRAWING
+  if (topMargin === 'black' || topMargin === 'red') {
+    ctx.strokeStyle = topMargin === 'red' ? '#d32f2f' : '#222';
+    ctx.beginPath();
+    ctx.moveTo(0, topY);
+    ctx.lineTo(canvas.width, topY);
+    ctx.stroke();
+  }
+
   /** Send image data for modification if effect is scanner */
   if (document.querySelector('#page-effects').value === 'scanner') {
-    const context = canvas.getContext('2d');
-    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     contrastImage(imageData, 0.55);
-    canvas.getContext('2d').putImageData(imageData, 0, 0);
+    ctx.putImageData(imageData, 0, 0);
   }
 
   outputImages.push(canvas);

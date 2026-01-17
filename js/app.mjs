@@ -103,13 +103,30 @@ const EVENT_MAP = {
       setInkColor(e.target.value);
     }
   },
-  '#paper-margin-toggle': {
+  '#ink-color': {
     on: 'change',
-    action: () => {
-      if (pageEl.classList.contains('margined')) {
-        pageEl.classList.remove('margined');
-      } else {
-        pageEl.classList.add('margined');
+    action: (e) => {
+      document.body.style.setProperty('--ink-color', e.target.value);
+      setInkColor(e.target.value);
+    }
+  },
+  '#side-margin': {
+    on: 'change',
+    action: (e) => {
+      const val = e.target.value;
+      pageEl.classList.remove('side-margin-space', 'side-margin-black', 'side-margin-red');
+      if (val !== 'none') {
+        pageEl.classList.add(`side-margin-${val}`);
+      }
+    }
+  },
+  '#top-margin': {
+    on: 'change',
+    action: (e) => {
+      const val = e.target.value;
+      pageEl.classList.remove('top-margin-space', 'top-margin-black', 'top-margin-red');
+      if (val !== 'none') {
+        pageEl.classList.add(`top-margin-${val}`);
       }
     }
   },

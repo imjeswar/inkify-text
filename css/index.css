@@ -275,35 +275,69 @@ body.dark .github-corner {
   background-size: 100% 1.5em;
 }
 
-.margined .paper-content {
-  padding: 5px;
-  margin: 0px;
+/* Margin styling for Side and Top Margins */
+.page-a.side-margin-space .paper-content,
+.page-a.side-margin-black .paper-content,
+.page-a.side-margin-red .paper-content {
   padding-left: 55px;
 }
 
+.page-a.top-margin-space .paper-content,
+.page-a.top-margin-black .paper-content,
+.page-a.top-margin-red .paper-content {
+  padding-top: 50px;
+}
+
+/* Margin Separators (Preview Only) */
 .left-margin,
 .top-margin {
   display: none;
 }
 
-.margined .top-margin {
-  height: 50px;
-  border-bottom: 2px solid pink;
-  width: 100%;
+/* Side Margin Lines */
+.page-a.side-margin-black .left-margin {
   display: block;
-  overflow-y: auto;
-}
-
-.margined .left-margin {
-  width: 50px;
-  height: calc(100%);
-  display: inline-block;
-  border-right: 2px solid pink;
-  top: 0px;
-  padding-top: 50px;
-  overflow-x: hidden;
   position: absolute;
   left: 0;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  border-right: 2px solid #222;
+  z-index: 10;
+}
+
+.page-a.side-margin-red .left-margin {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  border-right: 2px solid #d32f2f;
+  z-index: 10;
+}
+
+/* Top Margin Lines */
+.page-a.top-margin-black .top-margin {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid #222;
+  z-index: 10;
+}
+
+.page-a.top-margin-red .top-margin {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid #d32f2f;
+  z-index: 10;
 }
 
 .overlay {
@@ -313,6 +347,7 @@ body.dark .github-corner {
   height: 100%;
   width: 100%;
   display: none;
+  pointer-events: none;
 }
 
 .overlay.shadows {
@@ -529,4 +564,130 @@ input[type='file']::before {
   .delete-button {
     margin-top: 10px;
   }
+}
+
+/* =====================================
+   OUTER BACKGROUND — LIGHT (GREY GRADIENT)
+   ===================================== */
+
+body:not(.dark) {
+  background: linear-gradient(145deg,
+      #e6e6e6 0%,
+      #afb0b3 45%,
+      #838487 100%);
+  background-attachment: fixed;
+}
+
+/* Keep outer text readable */
+body:not(.dark) {
+  color: #2e2e2e;
+}
+
+/* =====================================
+   OUTER BACKGROUND — DARK (MATTE BLACK)
+   ===================================== */
+
+body.dark {
+  background: radial-gradient(circle at 50% 40%,
+      #2a2a2a 0%,
+      #141414 40%,
+      #080808 100%),
+    linear-gradient(180deg,
+      #111111,
+      #000000);
+  background-attachment: fixed;
+}
+
+/* Soft white outer text */
+body.dark {
+  color: #d0d0d0;
+}
+
+/* =====================================
+   FINAL FIX — STRICT HEIGHT LOCK
+   ===================================== */
+
+/* OUTPUT GRID */
+.output {
+  display: flex !important;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  align-items: flex-start;
+  /* Ensures cards don't stretch vertically */
+}
+
+/* CARD */
+.output-card {
+  width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* LOCK PAGE SIZE */
+.page-frame {
+  width: 100%;
+  height: 360px;
+  /* 🔒 HARD LOCK HEIGHT */
+  background: #f5f5f5;
+  /* works in light & dark */
+  border-radius: 12px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--field-borders);
+}
+
+/* IMAGE RULE — NEVER BREAK */
+.page-frame img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* 🔥 KEY */
+  width: auto;
+  height: auto;
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+
+/* Close button positioning */
+.output-card .close-button {
+  background: #333;
+  color: #fff;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  padding: 0;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  z-index: 10;
+}
+
+body.dark .output-card .close-button {
+  background: #eee;
+  color: #111;
+  border-color: #333;
+}
+
+body.dark .page-frame {
+  background: #1e1e1e;
+  border-color: #333;
 }

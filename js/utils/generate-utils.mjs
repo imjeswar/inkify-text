@@ -73,42 +73,42 @@ function renderOutput(outputImages) {
   document.querySelector('#output').innerHTML = outputImages
     .map(
       (outputImageCanvas, index) => /* html */ `
-    <div 
-      class="output-image-container" 
-      style="position: relative;display: inline-block;"
-    >
-      <button 
-        data-index="${index}" 
-        class="close-button close-${index}">
-          &times;
-      </button>
-      <img 
-        class="shadow" 
-        alt="Output image ${index}" 
-        src="${outputImageCanvas.toDataURL('image/jpeg')}"
-      />
-      <div style="text-align: center">
+    <div class="output-card">
+      <div class="page-frame">
+        <img 
+          alt="Output image ${index}" 
+          src="${outputImageCanvas.toDataURL('image/jpeg')}"
+        />
+      </div>
+
+      <div class="actions">
         <a 
           class="button download-image-button" 
           download 
           href="${outputImageCanvas.toDataURL('image/jpeg')}
         ">Download Image</a>
-        <br/>
-        <br/>
-
-        <button 
-          class="button move-left"
-          data-index="${index}" 
-        >
-          Move Left
-        </button>
-        <button 
-          class="button move-right"
-          data-index="${index}" 
-        >
-          Move Right
-        </button>
+        
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+          <button 
+            class="button move-left"
+            data-index="${index}" 
+          >
+            Move Left
+          </button>
+          <button 
+            class="button move-right"
+            data-index="${index}" 
+          >
+            Move Right
+          </button>
+        </div>
       </div>
+      
+      <button 
+        data-index="${index}" 
+        class="close-button close-${index}">
+          &times;
+      </button>
     </div>
     `
     )

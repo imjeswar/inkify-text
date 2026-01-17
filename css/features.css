@@ -7,24 +7,31 @@
   border: none;
   background: transparent;
 }
+
 body:not(.user-is-tabbing) .dark-mode-toggle:focus {
   outline: none;
 }
+
 .dark-mode-toggle .moon {
   padding: 10px;
 }
+
 .dark-mode-toggle .sun {
   padding: 5px;
 }
+
 body .dark-mode-toggle .moon {
   display: none;
 }
+
 body .dark-mode-toggle .sun {
   display: inline-block;
 }
+
 body.dark .dark-mode-toggle .moon {
   display: inline-block;
 }
+
 body.dark .dark-mode-toggle .sun {
   display: none;
 }
@@ -55,11 +62,11 @@ body.dark .dark-mode-toggle .sun {
   transition: 0.1s ease;
 }
 
-.switch-toggle input:focus + div {
+.switch-toggle input:focus+div {
   outline: 1;
 }
 
-.switch-toggle input:checked + div {
+.switch-toggle input:checked+div {
   left: 28px;
   background-color: #999f;
 }
